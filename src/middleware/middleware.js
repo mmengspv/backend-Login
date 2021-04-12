@@ -6,7 +6,7 @@ export const verifyToken = async (req, res, next) => {
 
   try {
     const verify = await jwt.verify(token, process.env.SECRET_TOKEN);
-    // req.user = verify;
+    req.user = verify;
     next();
   } catch (err) {
     res.status(400).send("Invalid Token");
